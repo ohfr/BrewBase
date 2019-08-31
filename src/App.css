@@ -1,33 +1,39 @@
-.App {
+
+.pubCard{
+  width: 25%;
+  height: 25%;
+  border: 2px solid black;
+  padding: 10px;
+  margin: 10px;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  background: #1365F1;
+}
+
+.pubImage {
+  margin-top: -25px;
+  background-image: url('https://images.unsplash.com/photo-1505075106905-fb052892c116?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
+  background-repeat: no-repeat;
+  /* background-position: 50%; */
+  background-size: 100%;
+  height: 500px;
+  width: 100%;
+
+}
+
+.pubImage > h1 {
+  color: whitesmoke;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.pubs {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  flex-flow: row wrap;
+  justify-content: space-between;
 }
