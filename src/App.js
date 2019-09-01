@@ -5,6 +5,7 @@ import axios from 'axios';
 import NavBar from './Components/Nav/NavBar';
 import Home from './Components/HomePage/Home';
 import About from './Components/AboutPage/About';
+import Likes from './Components/Likes/Likes';
 
 import './App.css';
 
@@ -40,6 +41,7 @@ const App = () => {
       <NavBar search={searching}/>
       <Route exact path='/' render={(props) => <Home {...props} pubName={pubData}/>} />
       <Route path="/About" component={About} />
+      <Route path="/Likes" render={(props) => <Likes {...props} likes={"true"} /> } />
 
     </div>
   )

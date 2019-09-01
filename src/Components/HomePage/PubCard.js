@@ -1,5 +1,5 @@
 import React from 'react';
-import LikesView from '../Likes/LIkesView';
+import LikesView from '../Likes/LikesView';
 
 const PubCard = props => {
     return (

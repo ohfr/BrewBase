@@ -33,6 +33,7 @@ const NavBar = (props) => {
             <StyledImg src={require('../../Assets/logo_transparent.png')} />
             <StyledLink to='/'>Home</StyledLink>
             <StyledLink to='/About'>About</StyledLink>
+            <StyledLink to='/Likes'>Likes</StyledLink>
             <NavSearch search={props.search}/>
         </nav>
     )
