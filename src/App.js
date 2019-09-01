@@ -15,12 +15,18 @@ const App = () => {
   useEffect(() => {
     //geolocation code, need to get lat long into city name VV MAYBE set up node backend api with node-geocoder to deliver that ???
 
-    // console.log(navigator.geolocation.getCurrentPosition(position => {
-    //   console.log(position)
-    // }))
+    // https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${pos.coords.x}&lon=${pos.coords.y}
+
+    // reverse geocode !! ^^ coords could be wrong, mac doesnt like navigator
+
+
+    // navigator.geolocation.getCurrentPosition(pos => {
+    //   console.log(pos);
+    // })
+
     axios.get(`https://api.openbrewerydb.org/breweries?by_city=${search}`)
     .then(res => {
-      console.log(res.data)
+      
       setPubData(res.data)
     })
     .catch(err => console.log(err))

@@ -1,4 +1,5 @@
 import React from 'react';
+import LikesView from '../Likes/LIkesView';
 
 const PubCard = props => {
     return (
@@ -7,6 +8,7 @@ const PubCard = props => {
             <address>
                 {props.address}, {props.city}, {props.state}, {props.zip}
             </address>
+            <LikesView />
         </div>
     )
 }
