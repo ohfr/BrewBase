@@ -10,7 +10,7 @@ const Home = (props) => {
             <Image />
             <div className="pubs">
                 {props.pubName.length === 0 ? <h3>There are no breweries near you ): </h3> : props.pubName.map((item, index) => {
-                    return <PubCard name={item.name} key={index} address={item.street} city={item.city} state={item.state} zip={item.postal_code}/>
+                    return <PubCard  item={item} likePicker={props.likePicker} name={item.name} key={index} address={item.street} city={item.city} state={item.state} zip={item.postal_code}/>
                 })}
             </div>
         </div>

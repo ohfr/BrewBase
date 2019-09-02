@@ -9,11 +9,9 @@ import styled from 'styled-components';
 
 
 const LikesView = (props) => {
-
-    // push this state up to app js, make this component dumb
-    const [isLiked, setIsLiked] = useState(false)
+    // push this state up to app js, make this component dumb... that didn't work
     return (
-        <FontAwesomeIcon icon={faHeart} color={isLiked ? "red" : "black"} onClick={() => setIsLiked(!isLiked)} />
+        <FontAwesomeIcon icon={faHeart} color={props.liked ? "red" : "black"} onClick={() => props.changeLike(props.item, props.key)} />
     )
 }
 

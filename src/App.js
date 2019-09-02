@@ -12,6 +12,7 @@ import './App.css';
 const App = () => {
   const [pubData, setPubData] = useState([]);
   const [search, setSearch] = useState("");
+  const [likedItem, setLikedItem] = useState([]);
 
   useEffect(() => {
     //geolocation code, need to get lat long into city name VV MAYBE set up node backend api with node-geocoder to deliver that ???
@@ -29,6 +30,7 @@ const App = () => {
     .then(res => {
       
       setPubData(res.data)
+      console.log(res.data)
     })
     .catch(err => console.log(err))
   },[search]);
@@ -36,12 +38,28 @@ const App = () => {
   const searching = val => {
     setSearch(val);
   }
+
+  const likePicker = (obj, index) => {
+    // isnt adding on the first click, only adds the second+, boo
+    if (likedItem.includes(obj)) {
+      likedItem.splice(index);
+    } else {
+    setLikedItem(likedItem => [...likedItem, obj])
+    }
+    console.log(likedItem)
+  }
+// should probably do a check and see if the item is already in the array, probably an easier fix
+  // const deleteLike = (index) => {
+  //   likedItem.splice(index, 1)
+  // }
+ 
   return (
     <div>
       <NavBar search={searching}/>
-      <Route exact path='/' render={(props) => <Home {...props} pubName={pubData}/>} />
+      <Route exact path='/' render={(props) => <Home {...props}  pubName={pubData} likePicker={likePicker}/>} />
+      <Route path="/Likes" render={(props) => <Likes likePicker={likePicker} {...props}  likedItems={likedItem} /> } />
       <Route path="/About" component={About} />
-      <Route path="/Likes" render={(props) => <Likes {...props} likes={"true"} /> } />
+      
 
     </div>
   )
