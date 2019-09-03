@@ -7,7 +7,6 @@ import Home from './Components/HomePage/Home';
 import About from './Components/AboutPage/About';
 import Likes from './Components/Likes/Likes';
 
-import './App.css';
 
 const App = () => {
   const [pubData, setPubData] = useState([]);
@@ -40,9 +39,8 @@ const App = () => {
   }
 
   const likePicker = (obj, index) => {
-    // isnt adding on the first click, only adds the second+, boo
     if (likedItem.includes(obj)) {
-      likedItem.splice(index);
+      likedItem.splice(index, 1);
     } else {
     setLikedItem(likedItem => [...likedItem, obj])
     }

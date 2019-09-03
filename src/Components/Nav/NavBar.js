@@ -3,7 +3,14 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import NavSearch from './NavSearch';
 
-
+const StyledNav = styled.nav`
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    background: #1365F1;
+`;
 const StyledLink = styled(Link)`
     font-size: 1.2rem;
     margin-bottom: 10px;
@@ -16,26 +23,23 @@ const StyledLink = styled(Link)`
     }
 `;
 
-const StyledH1 = styled.h1`
-    font-size: 2rem;
-    color: white;
-`;
 
 const StyledImg = styled.img`
     width: 20%;
-    height: 100px;
+    height: 20%;
+    margin-bottom: 10px; 
 `;
 
 const NavBar = (props) => {
     return (
-        <nav>
+        <StyledNav>
             {/* don't forget to use logo you made, check your email */}
-            <StyledImg src={require('../../Assets/logo_transparent.png')} />
+            <StyledImg src={require('../../Assets/logo-sideways.png')} />
             <StyledLink to='/'>Home</StyledLink>
-            <StyledLink to='/Likes'>Likes</StyledLink>
+            <StyledLink to='/Likes'>Favorites</StyledLink>
             <StyledLink to='/About'>About</StyledLink>
             <NavSearch search={props.search}/>
-        </nav>
+        </StyledNav>
     )
 }
 

@@ -1,26 +1,36 @@
 import React, {useState}  from 'react';
 import LikesView from '../Likes/LikesView';
+import styled from 'styled-components';
+
+const StyledDiv = styled.div`
+    width: 25%;
+    height: 25%;
+    border: 2px solid black;
+    padding: 10px;
+    margin: 10px;
+`;
 
 const PubCard = props => {
     const [liked, setLiked] = useState(false);
 
     const changeLike = (item, index) => {
-        setLiked(!liked);
+        setLiked(!liked)
 
-        // VVV this will have to get changed to allow for deleting liked items from list
         props.likePicker(item, index);
     }
 
     
     return (
-        <div className="pubCard">
+        // add website url and phone number
+        <StyledDiv>
             <h2>{props.name}</h2>
             <address>
                 {props.address}, {props.city}, {props.state}, {props.zip}
             </address>
-            <LikesView item={props.item} key={props.key} liked={liked} changeLike={changeLike} />
-        </div>
+            <LikesView item={props.item} liked={liked} changeLike={changeLike} />
+        </StyledDiv>
     )
 }
 
 export default PubCard;
+
