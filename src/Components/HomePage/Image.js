@@ -12,9 +12,11 @@ const StyledDiv = styled.div`
 `;
 
 const StyledH1 = styled.h1`
-    color: white;
+    color: #1365F1;
     font-size: 4rem;
     text-align: center;
+    // background: rgba(255, 255, 255, .2);
+    padding: 10px;
 `;
 
 const Image = () => {

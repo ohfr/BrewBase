@@ -7,6 +7,7 @@ import styled from 'styled-components';
 
 
 
+
 const LikesView = (props) => {
     // push this state up to app js, make this component dumb... that didn't work
     return (

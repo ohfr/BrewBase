@@ -12,11 +12,10 @@ const StyledNav = styled.nav`
     background: #1365F1;
 `;
 const StyledLink = styled(Link)`
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin-bottom: 10px;
     text-decoration: none;
     color: white;
-
     &:hover {
         color: black;
         text-decoration: underline;
