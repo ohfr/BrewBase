@@ -14,15 +14,12 @@ const App = () => {
   const [likedItem, setLikedItem] = useState([]);
 
   useEffect(() => {
-    //geolocation code, need to get lat long into city name VV MAYBE set up node backend api with node-geocoder to deliver that ???
 
-    // https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${pos.coords.x}&lon=${pos.coords.y}
-
-    // reverse geocode !! ^^ coords could be wrong, mac doesnt like navigator
-
+    // reverse geocode VV
 
     // navigator.geolocation.getCurrentPosition(pos => {
-    //   console.log(pos);
+    //   axios.get(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${pos.coords.latitude}&lon=${pos.coords.longitude}`)
+    //   .then(res => console.log(res))
     // })
 
     axios.get(`https://api.openbrewerydb.org/breweries?by_city=${search}`)
@@ -44,18 +41,13 @@ const App = () => {
     } else {
     setLikedItem(likedItem => [...likedItem, obj])
     }
-    console.log(likedItem)
   }
-// should probably do a check and see if the item is already in the array, probably an easier fix
-  // const deleteLike = (index) => {
-  //   likedItem.splice(index, 1)
-  // }
- 
+
   return (
     <div>
       <NavBar search={searching}/>
-      <Route exact path='/' render={(props) => <Home {...props}  pubName={pubData} likePicker={likePicker}/>} />
-      <Route path="/Likes" render={(props) => <Likes likePicker={likePicker} {...props}  likedItems={likedItem} /> } />
+      <Route exact path='/' render={(props) => <Home {...props} pubName={pubData} likePicker={likePicker}/>} />
+      <Route path="/Likes" render={(props) => <Likes {...props} likePicker={likePicker} likedItems={likedItem} /> } />
       <Route path="/About" component={About} />
       
 

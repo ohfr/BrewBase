@@ -13,6 +13,7 @@ const StyledDiv = styled.div`
 
 const StyledH1 = styled.h1`
     color: white;
+    font-size: 4rem;
     text-align: center;
 `;
 
