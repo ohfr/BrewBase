@@ -1,6 +1,6 @@
 import React, {useState}  from 'react';
-import LikesView from '../Likes/LikesView';
 import styled from 'styled-components';
+import LikesView from '../Likes/LikesView';
 
 
 const StyledDiv = styled.div`
