@@ -18,7 +18,7 @@ const Home = (props) => {
             <Image />
             <StyledDiv>
                 {props.pubName.length === 0 ? <h3>There are no breweries near you ): </h3> : props.pubName.map((item, index) => {
-                    return <PubCard  idKey={props.match.params.id} item={item} likePicker={props.likePicker} name={item.name} key={index} address={item.street} city={item.city} state={item.state} zip={item.postal_code}/>
+                    return <PubCard  id={index} item={item} likePicker={props.likePicker} name={item.name} key={item.id} address={item.street} city={item.city} state={item.state} zip={item.postal_code}/>
                 })}
             </StyledDiv>
         </div>

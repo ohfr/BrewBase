@@ -38,7 +38,7 @@ const PubCard = props => {
             <StyledAdress>
                 {props.address}, {props.city}, {props.state}, {props.zip}
             </StyledAdress>
-            <LikesView item={props.item} liked={liked} changeLike={changeLike} />
+            <LikesView item={props.item} liked={liked} id={props.id} changeLike={changeLike} />
         </StyledDiv>
         
     )
