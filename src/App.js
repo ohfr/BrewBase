@@ -6,6 +6,7 @@ import NavBar from './Components/Nav/NavBar';
 import Home from './Components/HomePage/Home';
 import About from './Components/AboutPage/About';
 import Likes from './Components/Likes/Likes';
+import Dashboard from './Dashboard';
 // import BrewCard from './Components/BrewCards/BrewCard';
 
 
@@ -46,12 +47,13 @@ const App = () => {
 
   return (
     <div>
-      <NavBar search={searching}/>
+      {/* <NavBar search={searching}/>
       <Route exact path='/' render={(props) => <Home {...props} pubName={pubData} likePicker={likePicker}/>} />
       <Route path="/Likes" render={(props) => <Likes {...props} likePicker={likePicker} likedItems={likedItem} /> } />
       {/* <Route path="/brewery/:id" render={(props) => <BrewCard {...props} /> } /> */}
-      <Route path="/About" component={About} />
+      {/* <Route path="/About" component={About} /> */} 
       
+    <Dashboard data={pubData} />
 
     </div>
   )
