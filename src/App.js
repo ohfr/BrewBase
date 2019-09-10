@@ -53,7 +53,7 @@ const App = () => {
       {/* <Route path="/brewery/:id" render={(props) => <BrewCard {...props} /> } /> */}
       {/* <Route path="/About" component={About} /> */} 
       
-    <Dashboard data={pubData} />
+    <Dashboard data={pubData} search={searching} />
 
     </div>
   )

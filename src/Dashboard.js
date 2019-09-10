@@ -9,12 +9,10 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 
-import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
 
@@ -22,7 +20,6 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    marginBottom: '20px',
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -82,28 +79,53 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'space-around',
     alignItems: 'flex-start',
 
+  },
+  backDrop: {
+    background:"linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.4)), url(https://images.unsplash.com/photo-1505075106905-fb052892c116?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)",
+    height: 300,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+
+
+  },
+  h1: {
+    color: 'white',
+    fontSize: '2rem'
   }
 }));
 
 
 const Dashboard = (props) => {
     const classes=useStyles();
-    const [liked, setLiked] = useState([{
-      id: '',
-      isLiked: false
-    }]);
+    const [liked, setLiked] = useState([{}]);
+
+    const [searchItem, setSearchItem] = useState("");
     
     const handleLike = (e) => {
-      setLiked([
-        ...liked,
-        {
-        id: e.currentTarget.value,
-        isLiked: true
-        }
+      
+      //not quite
 
-      ])
+      // setLiked([
+      //   ...liked,
+      //   {
+      //   id: e.currentTarget.value,
+      //   isLiked: !liked.isLiked
+      //   }
+
+      // ])
       console.log(liked)
     }
+    const handleChange = e => {
+      setSearchItem(e.target.value);
+    }
+
+    const handleSubmit = e => {
+      e.preventDefault();
+      props.search(searchItem);
+      setSearchItem("");
+    }
+
     return (
   <div>
     <div className={classes.root}>
@@ -124,18 +146,25 @@ const Dashboard = (props) => {
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
+            <form onSubmit={handleSubmit}>
             <InputBase
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
+              value={searchItem}
+              onChange={handleChange}
               inputProps={{ 'aria-label': 'search' }}
               
             />
+            </form>
           </div>
         </Toolbar>
       </AppBar>
+    </div>
+    <div className={classes.backDrop}>
+      <h1 className={classes.h1}>Find your local breweries</h1>
     </div>
     <div className={classes.cards}>
       {
@@ -152,7 +181,7 @@ const Dashboard = (props) => {
               </CardContent>
               <CardActions disableSpacing>
                 <IconButton value={index} aria-label="add to favorites" onClick={handleLike}>
-                  <FavoriteIcon  color={liked.isLiked ? "secondary" : "action"} />
+                  <FavoriteIcon  color={!liked ? "secondary" : "action"} />
                 </IconButton>
               </CardActions>
             </Card>
