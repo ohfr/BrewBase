@@ -113,7 +113,7 @@ const Dashboard = (props) => {
     
     const handleLike = (item, index) => {
       props.likePicker(item, index);
-      console.log(liked)
+      
     }
 
     return (
