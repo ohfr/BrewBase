@@ -48,10 +48,10 @@ const App = () => {
   return (
     <div>
       {/* <NavBar search={searching}/>
-      <Route exact path='/' render={(props) => <Home {...props} pubName={pubData} likePicker={likePicker}/>} />
+      <Route exact path='/Home' render={(props) => <Home {...props} pubName={pubData} likePicker={likePicker}/>} />
       <Route path="/Likes" render={(props) => <Likes {...props} likePicker={likePicker} likedItems={likedItem} /> } />
-      {/* <Route path="/brewery/:id" render={(props) => <BrewCard {...props} /> } /> */}
-      {/* <Route path="/About" component={About} /> */} 
+      <Route path="/brewery/:id" render={(props) => <BrewCard {...props} /> } /> 
+      <Route path="/About" component={About} /> */}
       
     <Dashboard data={pubData} search={searching} />
 

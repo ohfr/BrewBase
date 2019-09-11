@@ -8,12 +8,16 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import Menu from '@material-ui/core/Menu';
 
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import { MenuItem } from '@material-ui/core';
+
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -92,6 +96,13 @@ const useStyles = makeStyles(theme => ({
   h1: {
     color: 'white',
     fontSize: '2rem'
+  },
+  LinkElement: {
+    textDecoration: 'none',
+    color: 'black'
+  },
+  selectedLink: {
+    textDecoration: "underline",
   }
 }));
 
@@ -99,6 +110,8 @@ const useStyles = makeStyles(theme => ({
 const Dashboard = (props) => {
     const classes=useStyles();
     const [liked, setLiked] = useState([{}]);
+
+    const [anchorEl, setAnchorEl] = useState(null)
 
     const [searchItem, setSearchItem] = useState("");
     
@@ -126,6 +139,14 @@ const Dashboard = (props) => {
       setSearchItem("");
     }
 
+    const handleClose = () => {
+      setAnchorEl(null);
+    }
+
+    const handleClick = e => {
+      setAnchorEl(e.currentTarget);
+    }
+
     return (
   <div>
     <div className={classes.root}>
@@ -136,9 +157,28 @@ const Dashboard = (props) => {
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
+            onClick={handleClick}
           >
            <MenuIcon /> 
           </IconButton>
+          <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+        >
+          <MenuItem onClick={handleClose}>
+          <NavLink activeClassName={classes.selectedLink} className={classes.LinkElement} to="/">Home</NavLink>
+          </MenuItem>
+          <MenuItem onClick={handleClose}>
+          <NavLink activeClassName={classes.selectedLink} className={classes.LinkElement} to="/Likes">Favorites</NavLink>
+          </MenuItem>
+          <MenuItem onClick={handleClose}>
+            <NavLink activeClassName={classes.selectedLink} className={classes.LinkElement}to="/About">About</NavLink>
+          </MenuItem>
+
+        </Menu>
           <Typography className={classes.title} variant="h6" noWrap>
             BrewBase  
           </Typography>
@@ -148,7 +188,7 @@ const Dashboard = (props) => {
             </div>
             <form onSubmit={handleSubmit}>
             <InputBase
-              placeholder="Search…"
+              placeholder="Search your City"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
