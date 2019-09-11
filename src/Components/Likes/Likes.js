@@ -20,8 +20,8 @@ const Likes = (props) => {
         // map over array state of liked items 
         <StyledDiv>
             <StyledH2>Favorites:</StyledH2>
-            {props.likedItem.length === 0 ? <StyledH3>No likes yet ): </StyledH3> : props.likedItem.map((item, index) => {
-            return <PubCard name={item.name} city={item.city} zip={item.postal_code} address={item.street} state={item.state} item={item} key={index} likePicker={props.likePicker} likedItem={props.likedItem} />
+            {props.likedItem.length === 0 ? <StyledH3>No likes yet ): </StyledH3> : props.likedItem.map((card, index) => {
+            return <PubCard name={card.name} city={card.city} zip={card.postal_code} address={card.street} state={card.state} card={card} key={index} likePicker={props.likePicker} likedItem={props.likedItem} />
             })}
         </StyledDiv>
         

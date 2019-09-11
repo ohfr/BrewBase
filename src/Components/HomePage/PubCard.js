@@ -68,11 +68,8 @@ const useStyles = makeStyles(theme =>({
 const PubCard = (props) => {
     const classes= useStyles();
 
-    const [liked, setLiked] = useState(false);
-
     const changeLike = (item, index) => {
         props.likePicker(item, index);
-        setLiked(!liked)
 
     }
 
