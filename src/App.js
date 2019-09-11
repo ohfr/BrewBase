@@ -37,8 +37,9 @@ const App = () => {
   }
 
   const likePicker = (obj, index) => {
+    let current = likedItem.indexOf(obj);
     if (likedItem.includes(obj)) {
-      setLikedItem(likedItem => likedItem.splice(index, 1));
+      likedItem.length > 1 ? setLikedItem(likedItem => likedItem.splice(current, 1)) : setLikedItem([]);
     } else {
     setLikedItem(likedItem => [...likedItem, obj])
     }
