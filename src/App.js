@@ -38,10 +38,11 @@ const App = () => {
 
   const likePicker = (obj, index) => {
     if (likedItem.includes(obj)) {
-      likedItem.splice(index, 1);
+      setLikedItem(likedItem => likedItem.splice(index, 1));
     } else {
     setLikedItem(likedItem => [...likedItem, obj])
     }
+    
   }
 
   return (
@@ -52,8 +53,8 @@ const App = () => {
       <Route path="/brewery/:id" render={(props) => <BrewCard {...props} /> } /> 
       <Route path="/About" component={About} /> */}
     <NavBar search={searching} />
-    <Route exact path="/" render={(props) => <Home {...props} data={pubData} likePicker={likePicker} likedItem={likedItem} /> } />
-    <Route path="/Likes" render={(props) => <Likes {...props} likePicker={likePicker} likedItems={likedItem} /> } />
+    <Route exact path="/" render={(props) => <Home {...props} data={pubData} likePicker={likePicker}  likedItem={likedItem} /> } />
+    <Route path="/Likes" render={(props) => <Likes {...props} likePicker={likePicker} likedItem={likedItem} /> } />
     <Route path="/About" component={About} />
 
     </div>

@@ -60,7 +60,7 @@ const Home = (props) => {
             {
                 props.data.map((card, index) => {
                     return (
-                        <PubCard card={card} id={index} key={card.id} city={card.city} state={card.state} zip={card.postal_code} street={props.street} name={card.name} likePicker={props.likePicker} />
+                        <PubCard card={card} id={index} key={card.id} city={card.city} state={card.state} zip={card.postal_code} street={props.street} name={card.name} likePicker={props.likePicker} likedItem={props.likedItem} />
                     )
                 }) 
             }

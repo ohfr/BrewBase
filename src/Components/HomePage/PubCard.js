@@ -1,4 +1,4 @@
-import React, {useState}  from 'react';
+import React, {useState, useEffect}  from 'react';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
@@ -71,10 +71,15 @@ const PubCard = (props) => {
     const [liked, setLiked] = useState(false);
 
     const changeLike = (item, index) => {
-        setLiked(!liked);
-
         props.likePicker(item, index);
+        setLiked(!liked)
+
     }
+
+    // useEffect(() => {
+    //     props.likedItem.includes(props.card) ? setLiked(true) : setLiked(false);
+
+    // }, [])
 
     return (
         <div className={classes.cards}>
@@ -89,7 +94,7 @@ const PubCard = (props) => {
               </CardContent>
               <CardActions disableSpacing>
                 <IconButton value={props.id} aria-label="add to favorites" onClick={() => changeLike(props.card, props.id)}>
-                  <FavoriteIcon  color={liked ? "secondary" : "action"} />
+                  <FavoriteIcon  color={props.likedItem.includes(props.card) ? "secondary" : "action"} />
                 </IconButton>
               </CardActions>
             </Card>
