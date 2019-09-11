@@ -52,8 +52,10 @@ const App = () => {
       <Route path="/Likes" render={(props) => <Likes {...props} likePicker={likePicker} likedItems={likedItem} /> } />
       <Route path="/brewery/:id" render={(props) => <BrewCard {...props} /> } /> 
       <Route path="/About" component={About} /> */}
-      
-    <Dashboard data={pubData} search={searching} />
+    <NavBar search={searching} />
+    <Route exact path="/" render={(props) => <Dashboard {...props} data={pubData} likePicker={likePicker} /> } />
+    <Route path="/Likes" render={(props) => <Likes {...props} likePicker={likePicker} likedItems={likedItem} /> } />
+    <Route path="/About" component={About} />
 
     </div>
   )

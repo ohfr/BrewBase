@@ -14,7 +14,7 @@ const About = () => {
     return (
         <div>
             <StyledH2>About BrewBase:</StyledH2>
-            <StyledP>BrewBase was built using React, React Router, Styled-Components, and Axios.</StyledP>
+            <StyledP>BrewBase was built using React, React Router, Material-UI, and Axios.</StyledP>
         </div>
     )
 }

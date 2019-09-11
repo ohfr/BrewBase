@@ -110,99 +110,14 @@ const useStyles = makeStyles(theme => ({
 const Dashboard = (props) => {
     const classes=useStyles();
     const [liked, setLiked] = useState([{}]);
-
-    const [anchorEl, setAnchorEl] = useState(null)
-
-    const [searchItem, setSearchItem] = useState("");
     
-    const handleLike = (e) => {
-      
-      //not quite
-
-      // setLiked([
-      //   ...liked,
-      //   {
-      //   id: e.currentTarget.value,
-      //   isLiked: !liked.isLiked
-      //   }
-
-      // ])
+    const handleLike = (item, index) => {
+      props.likePicker(item, index);
       console.log(liked)
-    }
-    const handleChange = e => {
-      setSearchItem(e.target.value);
-    }
-
-    const handleSubmit = e => {
-      e.preventDefault();
-      props.search(searchItem);
-      setSearchItem("");
-    }
-
-    const handleClose = () => {
-      setAnchorEl(null);
-    }
-
-    const handleClick = e => {
-      setAnchorEl(e.currentTarget);
     }
 
     return (
   <div>
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleClick}
-          >
-           <MenuIcon /> 
-          </IconButton>
-          <Menu
-        id="simple-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-        >
-          <MenuItem onClick={handleClose}>
-          <NavLink activeClassName={classes.selectedLink} className={classes.LinkElement} to="/">Home</NavLink>
-          </MenuItem>
-          <MenuItem onClick={handleClose}>
-          <NavLink activeClassName={classes.selectedLink} className={classes.LinkElement} to="/Likes">Favorites</NavLink>
-          </MenuItem>
-          <MenuItem onClick={handleClose}>
-            <NavLink activeClassName={classes.selectedLink} className={classes.LinkElement}to="/About">About</NavLink>
-          </MenuItem>
-
-        </Menu>
-          <Typography className={classes.title} variant="h6" noWrap>
-            BrewBase  
-          </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <form onSubmit={handleSubmit}>
-            <InputBase
-              placeholder="Search your City"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              value={searchItem}
-              onChange={handleChange}
-              inputProps={{ 'aria-label': 'search' }}
-              
-            />
-            </form>
-          </div>
-        </Toolbar>
-      </AppBar>
-    </div>
     <div className={classes.backDrop}>
       <h1 className={classes.h1}>Find your local breweries</h1>
     </div>
@@ -220,7 +135,7 @@ const Dashboard = (props) => {
                 </Typography>
               </CardContent>
               <CardActions disableSpacing>
-                <IconButton value={index} aria-label="add to favorites" onClick={handleLike}>
+                <IconButton value={index} aria-label="add to favorites" onClick={() => handleLike(card, index)}>
                   <FavoriteIcon  color={!liked ? "secondary" : "action"} />
                 </IconButton>
               </CardActions>
