@@ -21,7 +21,7 @@ const Likes = (props) => {
         <StyledDiv>
             <StyledH2>Favorites:</StyledH2>
             {props.likedItem.length === 0 ? <StyledH3>No likes yet ): </StyledH3> : props.likedItem.map((card, index) => {
-            return <PubCard name={card.name} city={card.city} zip={card.postal_code} address={card.street} state={card.state} card={card} key={index} likePicker={props.likePicker} likedItem={props.likedItem} />
+            return <PubCard name={card.name} city={card.city} zip={card.postal_code} address={card.street} state={card.state} card={card} key={card.id} likePicker={props.likePicker} likedItem={props.likedItem} id={index}/>
             })}
         </StyledDiv>
         
