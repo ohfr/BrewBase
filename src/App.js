@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer} from 'react';
 import { Route } from 'react-router-dom';
 import axios from 'axios';
 
@@ -8,11 +8,13 @@ import About from './Components/AboutPage/About';
 import Likes from './Components/Likes/Likes';
 // import BrewCard from './Components/BrewCards/BrewCard';
 
+import {reducer, initialState, REMOVE_ITEM, ADD_ITEM} from './Reducers/reducer';
 
 const App = () => {
   const [pubData, setPubData] = useState([]);
   const [search, setSearch] = useState("");
-  const [likedItem, setLikedItem] = useState([]);
+  // const [likedItem, setLikedItem] = useState([]);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
 
@@ -36,14 +38,21 @@ const App = () => {
     setSearch(val);
   }
 
-  const likePicker = (obj, index) => {
-    let current = likedItem.indexOf(obj);
-    if (likedItem.includes(obj)) {
-      likedItem.length > 1 ? setLikedItem(likedItem => likedItem.splice(current, 1)) : setLikedItem([]);
-    } else {
-    setLikedItem(likedItem => [...likedItem, obj])
-    }
+  // const likePicker = (obj, index) => {
+  //   let current = likedItem.indexOf(obj);
+  //   if (likedItem.includes(obj)) {
+  //     likedItem.length > 1 ? setLikedItem(likedItem => likedItem.splice(current, 1)) : setLikedItem([]);
+  //   } else {
+  //   setLikedItem(likedItem => [...likedItem, obj])
+  //   }
     
+  // }
+  const likePicker = (item) => {
+   if (state.includes(item)) {
+     dispatch({type: REMOVE_ITEM, payload: item})
+   } else {
+     dispatch({type: ADD_ITEM, payload: item})
+   }
   }
 
   return (
@@ -54,8 +63,8 @@ const App = () => {
       <Route path="/brewery/:id" render={(props) => <BrewCard {...props} /> } /> 
       <Route path="/About" component={About} /> */}
     <NavBar search={searching} />
-    <Route exact path="/" render={(props) => <Home {...props} data={pubData} likePicker={likePicker}  likedItem={likedItem} /> } />
-    <Route path="/Likes" render={(props) => <Likes {...props} likePicker={likePicker} likedItem={likedItem} /> } />
+    <Route exact path="/" render={(props) => <Home {...props} data={pubData} likePicker={likePicker}  likedItem={state} /> } />
+    <Route path="/Likes" render={(props) => <Likes {...props} likePicker={likePicker} likedItem={state} /> } />
     <Route path="/About" component={About} />
 
     </div>

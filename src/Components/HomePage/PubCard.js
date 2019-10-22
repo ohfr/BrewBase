@@ -68,8 +68,8 @@ const useStyles = makeStyles(theme =>({
 const PubCard = (props) => {
     const classes= useStyles();
 
-    const changeLike = (item, index) => {
-        props.likePicker(item, index);
+    const changeLike = (item) => {
+        props.likePicker(item);
 
     }
 
@@ -90,7 +90,7 @@ const PubCard = (props) => {
                 </Typography>
               </CardContent>
               <CardActions disableSpacing>
-                <IconButton value={props.id} aria-label="add to favorites" onClick={() => changeLike(props.card, props.id)}>
+                <IconButton value={props.id} aria-label="add to favorites" onClick={() => changeLike(props.card)}>
                   <FavoriteIcon  color={props.likedItem.includes(props.card) ? "secondary" : "action"} />
                 </IconButton>
               </CardActions>
