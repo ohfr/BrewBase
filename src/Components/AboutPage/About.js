@@ -1,20 +1,24 @@
 import React from 'react';
-import styled from 'styled-components';
+import { makeStyles } from '@material-ui/core/styles';
 
-const StyledH2 = styled.h2`
-    text-align: center;
-    font-size: 2rem;
-`;
+const useStyles = makeStyles({
+    header: {
+        textAlign: 'center',
+        fontSize: '2rem',
+    },
+    pTag: {
+        fontSize: '1.5rem',
+    }
+})
 
-const StyledP = styled.p`
-    font-size: 1.5rem;
-`;
 
 const About = () => {
+    const classes=useStyles();
+
     return (
         <div>
-            <StyledH2>About BrewBase:</StyledH2>
-            <StyledP>BrewBase was built using React, React Router, Material-UI, and Axios.</StyledP>
+            <h2 className={classes.header}>About BrewBase:</h2>
+            <p className={classes.pTag}>BrewBase was built using React, React Router, Material-UI, and Axios.</p>
         </div>
     )
 }

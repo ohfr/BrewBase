@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import { makeStyles } from '@material-ui/core';
 
-const StyledInput = styled.input`
-    margin-bottom: 10px;
-`;
+const useStyles = makeStyles({
+    input: {
+        marginBottom: '10px',
+    }
+})
 
 const NavSearch = (props) => {
+    const classes=useStyles();
     const [searched, setSearched] = useState("");
     
     const changeHandler = (e) => {
@@ -20,7 +23,7 @@ const NavSearch = (props) => {
     return (
         <form onSubmit={submitForm}>
             <label htmlFor="Search"></label>
-            <StyledInput onChange={changeHandler} type="text" name="Search" placeholder="Search your city" value={searched} />
+            <input className={classes.input} onChange={changeHandler} type="text" name="Search" placeholder="Search your city" value={searched} />
 
             <button type="submit">Submit</button>
         </form>
